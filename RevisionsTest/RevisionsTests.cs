@@ -6,7 +6,7 @@ namespace RevisionsTest
     public class RevisionsTests
     {
         [TestMethod]
-        public void CheckForRevisions_WithRevisionFileName_ReturnsCorrectFileDetails()
+        public void CheckForRevisions_WithRevision_ReturnsFileDetails()
         {
             // Arrange
             Revisions revisions = new Revisions();
@@ -23,7 +23,7 @@ namespace RevisionsTest
         }
 
         [TestMethod]
-        public void CheckForRevisions_WithoutRevisionFileName_ReturnsCorrectFileDetails()
+        public void CheckForRevisions_WithoutRevision_ReturnsFileDetails()
         {
             // Arrange
             Revisions revisions = new Revisions();
