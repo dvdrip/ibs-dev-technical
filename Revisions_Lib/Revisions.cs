@@ -7,11 +7,14 @@
             FileDetails fileDetails = new FileDetails();
 
             //assuming filenames do not contain multiple underscores before and after the revision number
-            if (fileName.Contains("_"))
-            {
-                string[] fileSplit = fileName.Split('_');
+            //else i will add a different approach to handle edge cases
+            int lastUnderscoreIndex = fileName.LastIndexOf('_');
 
-                if (fileSplit.Length == 2 && int.TryParse(fileSplit[1].Replace(".pdf", ""), out int revisionNumber))
+            if (lastUnderscoreIndex != -1)
+            {
+                string revisionPart = fileName.Substring(lastUnderscoreIndex + 1);
+
+                if (int.TryParse(revisionPart.Replace(".pdf", ""), out int revisionNumber))
                 {
                     fileDetails.FileName = fileName;
                     fileDetails.FileExpectedName = Path.GetFileNameWithoutExtension(fileName);
