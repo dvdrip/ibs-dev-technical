@@ -4,35 +4,44 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace ibs_dev_technical
 {
     public class Revisions
     {
-        public FileDetails? CheckForRevisions(string fileName)
+
+        public FileDetails CheckForRevisions(string fileName)
         {
-            string currentFileName = "";
+            FileDetails fileDetails = new FileDetails();
 
-            //check if fileName is null
-            if (string.IsNullOrEmpty(fileName))
+            if (fileName.Contains("_"))
             {
-                return null;
-            }
+                string[] fileSplit = fileName.Split('_');
 
-            //check revision and return file details
-            return null;
-        }
-
-        public string GetFileHash(string filePath)
-        {
-            using (var md5 = MD5.Create())
-            {
-                using (var stream = File.OpenRead(filePath))
+                if (fileSplit.Length == 2 && int.TryParse(fileSplit[1].Replace(".pdf", ""), out int revisionNumber))
                 {
-                    byte[] hash = md5.ComputeHash(stream);
-                    return BitConverter.ToString(hash).Replace("-", "").ToLower();
+                    fileDetails.FileName = fileName;
+                    fileDetails.FileExpectedName = Path.GetFileNameWithoutExtension(fileName);
+                    fileDetails.Version_ID = revisionNumber;
+                    fileDetails.IsRevision = true;
+                }
+                else
+                {
+                    fileDetails.Version_ID = 0;
+                    fileDetails.IsRevision = false;
                 }
             }
+            else
+            {
+                fileDetails.FileName = fileName;
+                fileDetails.FileExpectedName = Path.GetFileNameWithoutExtension(fileName);
+                fileDetails.Version_ID = 0;
+                fileDetails.IsRevision = false;
+            }
+
+            return fileDetails;
         }
+
     }
 }

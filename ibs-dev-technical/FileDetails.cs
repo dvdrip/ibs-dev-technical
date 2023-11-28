@@ -9,6 +9,7 @@ namespace ibs_dev_technical
     public class FileDetails
     {
         public string FileName { get; set; }
+        public string FileExpectedName { get; set; }
         public int Version_ID { get; set; }
         public bool IsRevision { get; set; }
     }

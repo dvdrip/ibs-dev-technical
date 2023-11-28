@@ -32,5 +32,19 @@ namespace ibs_dev_technical
             }
 
         }
+
+        private void textFileName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonTest_Click(object sender, EventArgs e)
+        {
+            Revisions revisions = new Revisions();
+
+            var x = revisions.CheckForRevisions(textFileName.Text);
+
+            textFilePath.Text = $"File Name: {x.FileName}, File Expected Name: {x.FileExpectedName}, Version ID: {x.Version_ID}, Revision: {x.IsRevision}";
+        }
     }
 }
