@@ -15,6 +15,7 @@ namespace ibs_dev_technical
         {
             FileDetails fileDetails = new FileDetails();
 
+            //assuming filenames do not contain multiple underscores before and after the revision number
             if (fileName.Contains("_"))
             {
                 string[] fileSplit = fileName.Split('_');
@@ -25,11 +26,6 @@ namespace ibs_dev_technical
                     fileDetails.FileExpectedName = Path.GetFileNameWithoutExtension(fileName);
                     fileDetails.Version_ID = revisionNumber;
                     fileDetails.IsRevision = true;
-                }
-                else
-                {
-                    fileDetails.Version_ID = 0;
-                    fileDetails.IsRevision = false;
                 }
             }
             else

@@ -42,9 +42,9 @@ namespace ibs_dev_technical
         {
             Revisions revisions = new Revisions();
 
-            var x = revisions.CheckForRevisions(textFileName.Text);
+            var checkedFile = revisions.CheckForRevisions(textFileName.Text);
 
-            textFilePath.Text = $"File Name: {x.FileName}, File Expected Name: {x.FileExpectedName}, Version ID: {x.Version_ID}, Revision: {x.IsRevision}";
+            textFilePath.Text = $"File Name: {checkedFile.FileName}, File Expected Name: {checkedFile.FileExpectedName}, Version ID: {checkedFile.Version_ID}, Revision: {checkedFile.IsRevision}";
         }
     }
 }
