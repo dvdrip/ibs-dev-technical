@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ibs_dev_technical
+namespace Revisions_Lib
 {
     public class FileDetails
     {

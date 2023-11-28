@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-
-namespace ibs_dev_technical
+﻿namespace Revisions_Lib
 {
     public class Revisions
     {
-
         public FileDetails CheckForRevisions(string fileName)
         {
             FileDetails fileDetails = new FileDetails();
